@@ -57,12 +57,17 @@ class SchoolTest < Minitest::Test
   end
   
   def test_school_will_return_standard_names_if_full_time
-    school = School.new('9:00', 7)
+    school1 = School.new('9:00', 7)
+    school2 = School.new('9:00', 4)
 
-    school.add_student_name('Aurora')
-    school.add_student_name('tim')
-    school.add_student_name('megan')
+    school1.add_student_name('Aurora')
+    school1.add_student_name('tim')
+    school1.add_student_name('megan')
+    school2.add_student_name('Aurora')
+    school2.add_student_name('tim')
+    school2.add_student_name('megan')
     
-    assert_equal ["Aurora", "Tim", "Megan"], school.standard_student_names
+    assert_equal ["Aurora", "Tim", "Megan"], school1.standard_student_names
+    assert_equal ["Aurora", "tim", "megan"], school2.standard_student_names
   end
 end
